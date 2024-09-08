@@ -314,8 +314,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
     const grid = document.getElementById('grid');
     const detailsElement = document.getElementById('kanji-details');
 
-    // Event delegation for kanji clicks
-    grid.addEventListener('click', function (e) {
+    function handleKanjiItemInteraction(e) {
         if (e.target.classList.contains('kanji-item')) {
             const kanji = e.target.textContent;
             const kanjiDetails = Kanji.getDetails(kanji);
@@ -326,20 +325,10 @@ document.addEventListener("DOMContentLoaded", (event) => {
                 alert('Kanji details not found.');
             }
         }
-    });
-
-    grid.addEventListener('touchstart', function (e) {
-        if (e.target.classList.contains('kanji-item')) {
-            const kanji = e.target.textContent;
-            const kanjiDetails = Kanji.getDetails(kanji);
-            if (kanjiDetails) {
-                displayKanjiDetails(kanjiDetails);
-                detailsElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            } else {
-                alert('Kanji details not found.');
-            }
-        }
-    });
+    }
+    
+    grid.addEventListener('click', handleKanjiItemInteraction);
+    grid.addEventListener('touchstart', handleKanjiItemInteraction);
 
     // Debounced search functionality
     let searchTimeout;
