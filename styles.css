@@ -182,3 +182,12 @@
     padding: 0.5em;
     font-size: 0.8rem;
 }
+
+#match-count {
+    font-size: 0.8rem;
+    padding-top: 0.5em;
+}
+
+#checkbox-group {
+    padding-top: 0.5em;
+}

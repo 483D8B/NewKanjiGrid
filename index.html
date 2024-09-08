@@ -8,6 +8,7 @@
     <script src="script.js"></script>
     <link href="data:;base64,iVBORw0KGgo=" rel="icon" />
     <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/wanakana"></script>
     <script type="module" src="http://unpkg.com/kanji.js/dist/kanji.min.js"></script>
     <link href=" https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,6 +22,8 @@
     <div id="container">
 
 
+
+
         <div class="search">
             <select id="kanji-category">
                 <option value="kanjiKenteiLevel">KK</option>
@@ -29,7 +32,21 @@
                 <option value="rtk">RTK</option>
             </select>
             <div id="legend"></div>
+            <div id="checkbox-group">
+                <label>
+                    <input type="checkbox" id="onyomi-checkbox" name="search-type" value="onyomi"
+                        onchange="makeCheckboxesMutuallyExclusive('onyomi-checkbox'); handleCheckboxChange();">
+                    Onyomi
+                </label>
+                <label>
+                    <input type="checkbox" id="kunyomi-checkbox" name="search-type" value="kunyomi"
+                        onchange="makeCheckboxesMutuallyExclusive('kunyomi-checkbox'); handleCheckboxChange();">
+                    Kunyomi
+                </label>
+            </div>
             <input placeholder="Search..." id="search">
+            <div id="match-count">Matches: 0</div>
+            <!-- Checkboxes for onyomi and kunyomi -->
         </div>
 
         <div id="kanji-details"></div>

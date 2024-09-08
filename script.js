@@ -81,6 +81,7 @@ const subcategoryColors = {
 };
 
 
+let isBound = false;
 
 // Function to create the grid and apply colors to kanji based on subcategory
 function createKanjiGrid(kanjiLevels, subcategoryColors) {
@@ -146,38 +147,144 @@ function displayKanjiDetails(details) {
     `;
 }
 
-// Function to highlight search results
+
+// Function to highlight search results in kanji, meanings, kunyomi, and onyomi, and show match count
 function highlightSearchResults(searchValue) {
     const grid = document.getElementById('grid');
     const kanjiItems = grid.querySelectorAll('.kanji-item');
+    const matchCountElement = document.getElementById('match-count');
     let firstMatchFound = false;
+    let exactMatches = 0;
+    let partialMatches = 0;
 
+    // Trim the search value to remove leading/trailing spaces
+    searchValue = searchValue.trim();
+
+    // Function to check if searchValue is a single kanji character
+    function isSingleKanjiCharacter(value) {
+        // This assumes that a kanji character is a single Unicode character
+        return value.length === 1 && /\p{Script=Hani}/u.test(value);
+    }
+
+    // If search value is empty or contains only spaces, reset the grid and match count
+    if (!searchValue) {
+        matchCountElement.textContent = 'Matches: 0';
+        kanjiItems.forEach(item => {
+            const highlight = item.querySelector('.highlight-overlay');
+            if (highlight) {
+                highlight.remove(); // Remove all highlights if no valid search
+            }
+        });
+        return; // Exit the function if the search is empty or only spaces
+    }
+
+    // Helper function to check for exact matches
+    function checkExactMatch(details) {
+        const matchesKanji = details.literal === searchValue;
+        const matchesMeanings = details.meanings.includes(searchValue);
+        const matchesKunyomi = details.kunyomi.includes(searchValue);
+        const matchesOnyomi = details.onyomi.includes(searchValue);
+
+        return matchesKanji || matchesMeanings || matchesKunyomi || matchesOnyomi;
+    }
+
+    // Helper function to check for partial matches
+    function checkPartialMatch(details) {
+        const matchesKanji = details.literal.includes(searchValue);
+        const matchesMeanings = details.meanings.some(meaning => meaning.includes(searchValue));
+        const matchesKunyomi = details.kunyomi.some(kunyomi => kunyomi.includes(searchValue));
+        const matchesOnyomi = details.onyomi.some(onyomi => onyomi.includes(searchValue));
+
+        return matchesKanji || matchesMeanings || matchesKunyomi || matchesOnyomi;
+    }
+
+    // First pass: Look for exact matches
     kanjiItems.forEach(item => {
-        const matches = item.textContent.includes(searchValue) && searchValue !== '';
+        const kanji = item.dataset.kanji; // Get the kanji character from dataset
+        const kanjiDetails = Kanji.getDetails(kanji);
         const highlight = item.querySelector('.highlight-overlay');
 
+        const matches = checkExactMatch(kanjiDetails);
+
         if (matches) {
+            exactMatches++; // Increment exact match count
+
+            // Add highlight overlay if not already present
             if (!highlight) {
                 const overlay = document.createElement('div');
                 overlay.className = 'highlight-overlay';
                 item.appendChild(overlay);
             }
             if (!firstMatchFound) {
-                item.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                // Scroll into view only if the search value is a single kanji character
+                if (isSingleKanjiCharacter(searchValue)) {
+                    item.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
                 firstMatchFound = true;
             }
         } else {
             if (highlight) {
-                highlight.remove();
+                highlight.remove(); // Remove highlight if no match
             }
         }
     });
+
+    // Second pass: Look for partial matches if no exact match was found
+    if (exactMatches === 0) {
+        kanjiItems.forEach(item => {
+            const kanji = item.dataset.kanji; // Get the kanji character from dataset
+            const kanjiDetails = Kanji.getDetails(kanji);
+            const highlight = item.querySelector('.highlight-overlay');
+
+            const matches = checkPartialMatch(kanjiDetails);
+
+            if (matches) {
+                partialMatches++; // Increment partial match count
+
+                // Add highlight overlay if not already present
+                if (!highlight) {
+                    const overlay = document.createElement('div');
+                    overlay.className = 'highlight-overlay';
+                    item.appendChild(overlay);
+                }
+                if (!firstMatchFound) {
+                    // Scroll into view only if the search value is a single kanji character
+                    if (isSingleKanjiCharacter(searchValue)) {
+                        item.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+                    firstMatchFound = true;
+                }
+            } else {
+                if (highlight) {
+                    highlight.remove(); // Remove highlight if no match
+                }
+            }
+        });
+    }
+
+    // Update the match count display
+    const totalMatches = exactMatches > 0 ? exactMatches : partialMatches;
+    matchCountElement.textContent = `Matches: ${totalMatches}`;
 }
+
+
 
 // Event listener for DOM content loaded
 document.addEventListener("DOMContentLoaded", (event) => {
     const selectElement = document.getElementById('kanji-category');
     const searchInput = document.getElementById('search');
+    const onyomiCheckbox = document.getElementById('onyomi-checkbox');
+    const kunyomiCheckbox = document.getElementById('kunyomi-checkbox');
+
+    // Function to handle checkbox selection
+    function handleCheckboxChange() {
+        if (onyomiCheckbox.checked) {
+            kunyomiCheckbox.checked = false;
+        } else if (kunyomiCheckbox.checked) {
+            onyomiCheckbox.checked = false;
+        }
+    }
+
 
     // Function to load the kanji grid and legend based on selected category
     function loadKanjiGrid() {
@@ -231,3 +338,58 @@ document.addEventListener("DOMContentLoaded", (event) => {
         }, 300);
     });
 });
+
+
+function bindIME() {
+    const searchInput = document.getElementById('search');
+    wanakana.bind(searchInput, { IMEMode: IMEMode });
+    isBound = true; // Update the variable when bound
+}
+
+// Unbind the input from the current IMEMode
+function unbindIME() {
+    const searchInput = document.getElementById('search');
+    wanakana.unbind(searchInput);
+    isBound = false; // Update the variable when unbound
+}
+
+// Function to toggle IMEMode between 'toHiragana' and 'toKatakana'
+function toggleIMEMode() {
+    IMEMode = IMEMode === 'toHiragana' ? 'toKatakana' : 'toHiragana';
+    if (isBound) {
+        bindIME(); // Re-bind the input to the new IMEMode
+    }
+}
+
+// Function to handle checkbox change
+function handleCheckboxChange() {
+    const isOnyomiChecked = document.getElementById('onyomi-checkbox').checked;
+    const isKunyomiChecked = document.getElementById('kunyomi-checkbox').checked;
+
+    if (!isOnyomiChecked && !isKunyomiChecked) {
+        if (isBound) {
+            unbindIME(); // Unbind IME when both checkboxes are unchecked
+        }
+    } else {
+        // Determine the IMEMode based on the checked checkbox
+        if (isOnyomiChecked) {
+            IMEMode = 'toKatakana'; // Set IME mode to Katakana
+        } else if (isKunyomiChecked) {
+            IMEMode = 'toHiragana'; // Set IME mode to Hiragana
+        }
+        if (isBound) {
+            unbindIME(); // Unbind before rebinding with the new IMEMode
+        }
+        bindIME(); // Bind IME to the new IMEMode
+    }
+}
+
+// Function to make checkboxes mutually exclusive
+function makeCheckboxesMutuallyExclusive(clickedCheckboxId) {
+    const checkboxes = ['onyomi-checkbox', 'kunyomi-checkbox'];
+    checkboxes.forEach(id => {
+        if (id !== clickedCheckboxId) {
+            document.getElementById(id).checked = false;
+        }
+    });
+}
