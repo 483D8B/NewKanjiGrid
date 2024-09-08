@@ -20,17 +20,18 @@
 
     <div id="container">
 
-        <select id="kanji-category">
-            <option value="kanjiKenteiLevel">Kanji Kentei</option>
-            <option value="grade">Grade</option>
-            <option value="JLPTLevel">JLPT</option>
-            <option value="rtk">RTK</option>
-        </select>
 
         <div class="search">
+            <select id="kanji-category">
+                <option value="kanjiKenteiLevel">KK</option>
+                <option value="grade">Grade</option>
+                <option value="JLPTLevel">JLPT</option>
+                <option value="rtk">RTK</option>
+            </select>
+            <div id="legend"></div>
             <input placeholder="Search..." id="search">
         </div>
-        <div id="legend"></div>
+
         <div id="kanji-details"></div>
         <div id="grid"></div>
 
