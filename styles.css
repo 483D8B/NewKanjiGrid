@@ -57,7 +57,7 @@
     grid-template-columns: repeat(auto-fill, minmax(1.5em, 1fr));
     border: 2px solid var(--black);
     margin: 0.5em;
-    padding: 1em;
+    padding: 0.1em;
     width: calc(100% - 2em);
 }
 
@@ -118,7 +118,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--green);
+    background-color: var(--white);
     border-radius: 0.1em;
     border: 1px solid var(--black);
 }
@@ -131,7 +131,7 @@
 
 
 #kanji-details {
-    display: flex;
+    display: none;
     flex-direction: column;
     align-items: left;
     justify-content: center;
@@ -139,6 +139,10 @@
     margin: 1em;
     border: 2px solid var(--black);
     padding: 0.5em;
+}
+
+#kanji-details:not(:empty) {
+    display: flex;
 }
 
 #kanji-details p {
