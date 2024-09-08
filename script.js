@@ -16,36 +16,23 @@ const kanjiKenteiLevel = {
 
 
 // Function to create the grid
+/* JavaScript Optimizations */
 function createKanjiGrid(kanjiLevels) {
     const container = document.getElementById('grid');
+    const fragment = document.createDocumentFragment();
+
     for (const level in kanjiLevels) {
         const kanjis = kanjiLevels[level];
         for (const kanji of kanjis) {
             const kanjiElement = document.createElement('div');
             kanjiElement.classList.add('kanji-item');
-
-            const spanElement = document.createElement('span');
-            spanElement.textContent = kanji;
-
-            kanjiElement.appendChild(spanElement);
-            container.appendChild(kanjiElement);
-
-            // Add click event listener to fetch and display kanji details using Kanji.js
-            kanjiElement.addEventListener('click', function () {
-                // Use Kanji.js getDetails method to fetch kanji information
-                const kanjiDetails = Kanji.getDetails(kanji);
-                const detailsElement = document.getElementById('kanji-details');
-
-                if (kanjiDetails) {
-                    // Call a function to display the kanji details
-                    displayKanjiDetails(kanjiDetails);
-                    detailsElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                } else {
-                    alert('Kanji details not found.');
-                }
-            });
+            kanjiElement.textContent = kanji;
+            kanjiElement.dataset.kanji = kanji;
+            fragment.appendChild(kanjiElement);
         }
     }
+
+    container.appendChild(fragment);
 }
 
 // Function to display kanji details
@@ -67,32 +54,45 @@ function displayKanjiDetails(details) {
 
 
 document.addEventListener("DOMContentLoaded", (event) => {
-
     createKanjiGrid(kanjiKenteiLevel);
 
-    // Search functionality
-    document.getElementById('search').addEventListener('input', function () {
-        const searchValue = this.value.trim();
-        const kanjiItems = document.querySelectorAll('.kanji-item span');
-        let firstMatchFound = false;  // Track if the first match is found
+    const grid = document.getElementById('grid');
+    const searchInput = document.getElementById('search');
+    const detailsElement = document.getElementById('kanji-details');
 
-        kanjiItems.forEach(item => {
-            if (item.textContent.includes(searchValue) && searchValue !== '') {
-                item.style.color = 'var(--green)';       // Change color to red for matched kanji
-                item.style.fontSize = '2em';    // Increase font size for better visibility
-
-                // Focus the view on the first matching kanji
-                if (!firstMatchFound) {
-                    item.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    firstMatchFound = true;  // Only scroll to the first match
-                }
+    // Event delegation for kanji clicks
+    grid.addEventListener('click', function (e) {
+        if (e.target.classList.contains('kanji-item')) {
+            const kanji = e.target.textContent;
+            const kanjiDetails = Kanji.getDetails(kanji);
+            if (kanjiDetails) {
+                displayKanjiDetails(kanjiDetails);
+                detailsElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
             } else {
-                item.style.color = '';          // Reset color for unmatched kanji
-                item.style.fontSize = '';       // Reset font size for unmatched kanji
+                alert('Kanji details not found.');
             }
-        });
+        }
     });
 
+    // Debounced search functionality
+    let searchTimeout;
+    searchInput.addEventListener('input', function () {
+        clearTimeout(searchTimeout);
+        searchTimeout = setTimeout(() => {
+            const searchValue = this.value.trim();
+            const kanjiItems = grid.querySelectorAll('.kanji-item');
+            let firstMatchFound = false;
 
+            kanjiItems.forEach(item => {
+                const matches = item.textContent.includes(searchValue) && searchValue !== '';
+                item.style.color = matches ? 'var(--green)' : '';
+                item.style.fontSize = matches ? '2em' : '';
 
+                if (matches && !firstMatchFound) {
+                    item.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    firstMatchFound = true;
+                }
+            });
+        }, 300);
+    });
 });
