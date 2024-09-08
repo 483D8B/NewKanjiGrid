@@ -270,11 +270,17 @@ function highlightSearchResults(searchValue) {
 
 
 // Event listener for DOM content loaded
+// Event listener for DOM content loaded
 document.addEventListener("DOMContentLoaded", (event) => {
     const selectElement = document.getElementById('kanji-category');
     const searchInput = document.getElementById('search');
     const onyomiCheckbox = document.getElementById('onyomi-checkbox');
     const kunyomiCheckbox = document.getElementById('kunyomi-checkbox');
+    const grid = document.getElementById('grid');
+    const detailsElement = document.getElementById('kanji-details');
+
+    let touchStartX, touchStartY;
+    const touchThreshold = 10; // pixels
 
     // Function to handle checkbox selection
     function handleCheckboxChange() {
@@ -285,11 +291,9 @@ document.addEventListener("DOMContentLoaded", (event) => {
         }
     }
 
-
     // Function to load the kanji grid and legend based on selected category
     function loadKanjiGrid() {
         const selectedCategory = selectElement.value;
-
         // Map the selected category to the corresponding object
         const kanjiData = {
             'kanjiKenteiLevel': kanjiKenteiLevel,
@@ -297,26 +301,16 @@ document.addEventListener("DOMContentLoaded", (event) => {
             'JLPTLevel': JLPTLevel,
             'rtk': rtk
         };
-
         const colorData = subcategoryColors[selectedCategory]; // Get the color data for the selected category
-
         // Load the kanji grid and legend for the selected category
         createKanjiGrid(kanjiData[selectedCategory], colorData);
         createLegend(colorData);
     }
 
-    // Initial load for Kanji Kentei
-    loadKanjiGrid();
-
-    // Event listener for changing the kanji category
-    selectElement.addEventListener('change', loadKanjiGrid);
-
-    const grid = document.getElementById('grid');
-    const detailsElement = document.getElementById('kanji-details');
-
-    function handleKanjiItemInteraction(e) {
-        if (e.target.classList.contains('kanji-item')) {
-            const kanji = e.target.textContent;
+    // Function to handle kanji selection
+    function handleKanjiSelection(target) {
+        if (target.classList.contains('kanji-item')) {
+            const kanji = target.textContent;
             const kanjiDetails = Kanji.getDetails(kanji);
             if (kanjiDetails) {
                 displayKanjiDetails(kanjiDetails);
@@ -326,9 +320,42 @@ document.addEventListener("DOMContentLoaded", (event) => {
             }
         }
     }
-    
-    grid.addEventListener('click', handleKanjiItemInteraction);
-    grid.addEventListener('touchstart', handleKanjiItemInteraction);
+
+    // Touch event handlers
+    grid.addEventListener('touchstart', function (e) {
+        touchStartX = e.changedTouches[0].screenX;
+        touchStartY = e.changedTouches[0].screenY;
+    }, { passive: true });
+
+    grid.addEventListener('touchend', function (e) {
+        const touchEndX = e.changedTouches[0].screenX;
+        const touchEndY = e.changedTouches[0].screenY;
+        const dx = Math.abs(touchEndX - touchStartX);
+        const dy = Math.abs(touchEndY - touchStartY);
+
+        if (dx < touchThreshold && dy < touchThreshold) {
+            // This was a tap, not a scroll
+            handleKanjiSelection(e.target);
+        }
+    });
+
+    // Click event for non-touch devices
+    grid.addEventListener('click', function (e) {
+        // Check if the device supports touch events
+        if (!('ontouchstart' in window)) {
+            handleKanjiSelection(e.target);
+        }
+    });
+
+    // Initial load for Kanji Kentei
+    loadKanjiGrid();
+
+    // Event listener for changing the kanji category
+    selectElement.addEventListener('change', loadKanjiGrid);
+
+    // Event listeners for checkboxes
+    onyomiCheckbox.addEventListener('change', handleCheckboxChange);
+    kunyomiCheckbox.addEventListener('change', handleCheckboxChange);
 
     // Debounced search functionality
     let searchTimeout;
@@ -340,6 +367,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
         }, 150);
     });
 });
+
+// The rest of your code (createKanjiGrid, displayKanjiDetails, highlightSearchResults, createLegend) remains the same
 
 
 function bindIME() {
