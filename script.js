@@ -328,6 +328,19 @@ document.addEventListener("DOMContentLoaded", (event) => {
         }
     });
 
+    grid.addEventListener('touchstart', function (e) {
+        if (e.target.classList.contains('kanji-item')) {
+            const kanji = e.target.textContent;
+            const kanjiDetails = Kanji.getDetails(kanji);
+            if (kanjiDetails) {
+                displayKanjiDetails(kanjiDetails);
+                detailsElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            } else {
+                alert('Kanji details not found.');
+            }
+        }
+    });
+
     // Debounced search functionality
     let searchTimeout;
     searchInput.addEventListener('input', function () {
@@ -335,7 +348,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
         searchTimeout = setTimeout(() => {
             const searchValue = this.value.trim();
             highlightSearchResults(searchValue);
-        }, 300);
+        }, 150);
     });
 });
 
