@@ -41,9 +41,9 @@ const rtk = {
 
 
 // Function to create the grid
-/* JavaScript Optimizations */
 function createKanjiGrid(kanjiLevels) {
     const container = document.getElementById('grid');
+    container.innerHTML = ''; // Clear existing grid
     const fragment = document.createDocumentFragment();
 
     for (const level in kanjiLevels) {
@@ -63,8 +63,6 @@ function createKanjiGrid(kanjiLevels) {
 // Function to display kanji details
 function displayKanjiDetails(details) {
     const detailsContainer = document.getElementById('kanji-details');
-
-    // You can structure the output however you want. Here’s an example of displaying kanji info
     detailsContainer.innerHTML = `
     <h3>${details.literal}</h3>
     <p>Meanings: ${details.meanings.join(', ')}</p>
@@ -73,7 +71,7 @@ function displayKanjiDetails(details) {
     <p>Stroke Count: ${details.stroke_count}</p>
     <p>JLPT Level: ${details.jlpt}</p>
     <p>Frequency: ${details.freq}</p>
-`;
+    `;
 }
 
 // Function to highlight search results
@@ -104,13 +102,34 @@ function highlightSearchResults(searchValue) {
     });
 }
 
-
-
+// Event listener for DOM content loaded
 document.addEventListener("DOMContentLoaded", (event) => {
-    createKanjiGrid(kanjiKenteiLevel);
+    const selectElement = document.getElementById('kanji-category');
+    const searchInput = document.getElementById('search');
+
+    // Function to load the kanji grid based on selected category
+    function loadKanjiGrid() {
+        const selectedCategory = selectElement.value;
+
+        // Map the selected category to the corresponding object
+        const kanjiData = {
+            'kanjiKenteiLevel': kanjiKenteiLevel,
+            'grade': grade,
+            'JLPTLevel': JLPTLevel,
+            'rtk': rtk
+        };
+
+        // Load the kanji grid for the selected category
+        createKanjiGrid(kanjiData[selectedCategory]);
+    }
+
+    // Initial load for Kanji Kentei
+    loadKanjiGrid();
+
+    // Event listener for changing the kanji category
+    selectElement.addEventListener('change', loadKanjiGrid);
 
     const grid = document.getElementById('grid');
-    const searchInput = document.getElementById('search');
     const detailsElement = document.getElementById('kanji-details');
 
     // Event delegation for kanji clicks
