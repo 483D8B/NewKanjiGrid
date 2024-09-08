@@ -142,7 +142,6 @@ function displayKanjiDetails(details) {
     <p>Kunyomi: ${details.kunyomi.join(', ')}</p>
     <p>Onyomi: ${details.onyomi.join(', ')}</p>
     <p>Stroke Count: ${details.stroke_count}</p>
-    <p>JLPT Level: ${details.jlpt}</p>
     <p>Frequency: ${details.freq}</p>
     `;
 }
