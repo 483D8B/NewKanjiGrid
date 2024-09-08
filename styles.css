@@ -71,6 +71,19 @@
     transition: transform 0.2s ease-out;
 }
 
+
+.highlight-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--green);
+    opacity: 0.3;
+    pointer-events: none;
+    z-index: 1;
+}
+
 .kanji-item:hover {
     z-index: 1;
     transform: scale(2);

@@ -51,6 +51,34 @@ function displayKanjiDetails(details) {
 `;
 }
 
+// Function to highlight search results
+function highlightSearchResults(searchValue) {
+    const grid = document.getElementById('grid');
+    const kanjiItems = grid.querySelectorAll('.kanji-item');
+    let firstMatchFound = false;
+
+    kanjiItems.forEach(item => {
+        const matches = item.textContent.includes(searchValue) && searchValue !== '';
+        const highlight = item.querySelector('.highlight-overlay');
+
+        if (matches) {
+            if (!highlight) {
+                const overlay = document.createElement('div');
+                overlay.className = 'highlight-overlay';
+                item.appendChild(overlay);
+            }
+            if (!firstMatchFound) {
+                item.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                firstMatchFound = true;
+            }
+        } else {
+            if (highlight) {
+                highlight.remove();
+            }
+        }
+    });
+}
+
 
 
 document.addEventListener("DOMContentLoaded", (event) => {
@@ -80,19 +108,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
         clearTimeout(searchTimeout);
         searchTimeout = setTimeout(() => {
             const searchValue = this.value.trim();
-            const kanjiItems = grid.querySelectorAll('.kanji-item');
-            let firstMatchFound = false;
-
-            kanjiItems.forEach(item => {
-                const matches = item.textContent.includes(searchValue) && searchValue !== '';
-                item.style.color = matches ? 'var(--green)' : '';
-                item.style.fontSize = matches ? '2em' : '';
-
-                if (matches && !firstMatchFound) {
-                    item.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    firstMatchFound = true;
-                }
-            });
+            highlightSearchResults(searchValue);
         }, 300);
     });
 });
