@@ -99,6 +99,7 @@ function createKanjiGrid(kanjiLevels, subcategoryColors) {
             kanjiElement.textContent = kanji;
             kanjiElement.dataset.kanji = kanji;
             kanjiElement.style.backgroundColor = color; // Apply the color based on subcategory
+            kanjiElement.style.boxShadow = `0 0 10px ${color}, 0 0 15px ${color}`; // Smooth shadow with the same color
             fragment.appendChild(kanjiElement);
         }
     }
