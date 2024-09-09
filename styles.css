@@ -99,15 +99,15 @@
 } */
 
 .highlight-overlay {
+    border: 2px solid var(--black);
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: var(--green);
-    opacity: 0.3;
     pointer-events: none;
-    z-index: 1;
+    background-color: rgba(0, 128, 0, 0.3);
+    border-radius: 4px;
 }
 
 .kanji-item:hover {
