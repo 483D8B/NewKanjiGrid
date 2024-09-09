@@ -23,6 +23,42 @@
     --black: #222;
     --white: #FAF9F6;
     --green: #04AA6D;
+
+    --Level-10: #ff9999;
+    --Level-9: #ffcc99;
+    --Level-8: #ffff99;
+    --Level-7: #ccff99;
+    --Level-6: #99ff99;
+    --Level-5: #99ffcc;
+    --Level-4: #99ffff;
+    --Level-3: #99ccff;
+    --Level-Pre-2: #9999ff;
+    --Level-2: #cc99ff;
+    --Level-Pre-1: #ff99ff;
+    --Level-1: #ff99cc;
+
+    /* Grade Colors */
+    --grade-1: #ff9999;
+    --grade-2: #ffcc99;
+    --grade-3: #ffff99;
+    --grade-4: #ccff99;
+    --grade-5: #99ff99;
+    --grade-6: #99ffcc;
+    --grade-JuniorHS-Plus: #99ffff;
+    --grade-Jinmeiyou-regular: #99ccff;
+    --grade-Jinmeiyou-variant: #9999ff;
+
+    /* JLPT Level Colors */
+    --JLPT-N5: #ff9999;
+    --JLPT-N4: #ffcc99;
+    --JLPT-N3: #ffff99;
+    --JLPT-N2: #99ff99;
+    --JLPT-N1: #99ffcc;
+
+    /* RTK Colors */
+    --RTK1-6th-ed: #ff9999;
+    --RTK1-6th-ed-variant: #ffcc99;
+    --RTK3-3rd-ed: #ffff99;
 }
 
 #container {
@@ -245,271 +281,166 @@ label:before {
 
 
 
-/* Kanji Kentei Level styles */
-.kanji-Level-10 {
-    background-color: #ff9999;
-    box-shadow: 0 0 10px #ff9999, 0 0 15px #ff9999;
-}
-
-.kanji-Level-9 {
-    background-color: #ffcc99;
-    box-shadow: 0 0 10px #ffcc99, 0 0 15px #ffcc99;
-}
-
-.kanji-Level-8 {
-    background-color: #ffff99;
-    box-shadow: 0 0 10px #ffff99, 0 0 15px #ffff99;
-}
-
-.kanji-Level-7 {
-    background-color: #ccff99;
-    box-shadow: 0 0 10px #ccff99, 0 0 15px #ccff99;
-}
-
-.kanji-Level-6 {
-    background-color: #99ff99;
-    box-shadow: 0 0 10px #99ff99, 0 0 15px #99ff99;
-}
-
-.kanji-Level-5 {
-    background-color: #99ffcc;
-    box-shadow: 0 0 10px #99ffcc, 0 0 15px #99ffcc;
-}
-
-.kanji-Level-4 {
-    background-color: #99ffff;
-    box-shadow: 0 0 10px #99ffff, 0 0 15px #99ffff;
-}
-
-.kanji-Level-3 {
-    background-color: #99ccff;
-    box-shadow: 0 0 10px #99ccff, 0 0 15px #99ccff;
-}
-
-.kanji-Level-Pre-2 {
-    background-color: #9999ff;
-    box-shadow: 0 0 10px #9999ff, 0 0 15px #9999ff;
-}
-
-.kanji-Level-2 {
-    background-color: #cc99ff;
-    box-shadow: 0 0 10px #cc99ff, 0 0 15px #cc99ff;
-}
-
-.kanji-Level-Pre-1 {
-    background-color: #ff99ff;
-    box-shadow: 0 0 10px #ff99ff, 0 0 15px #ff99ff;
-}
-
-.kanji-Level-1 {
-    background-color: #ff99cc;
-    box-shadow: 0 0 10px #ff99cc, 0 0 15px #ff99cc;
-}
-
-/* Grade styles */
-.kanji-Grade-1 {
-    background-color: #ff9999;
-    box-shadow: 0 0 10px #ff9999, 0 0 15px #ff9999;
-}
-
-.kanji-Grade-2 {
-    background-color: #ffcc99;
-    box-shadow: 0 0 10px #ffcc99, 0 0 15px #ffcc99;
-}
-
-.kanji-Grade-3 {
-    background-color: #ffff99;
-    box-shadow: 0 0 10px #ffff99, 0 0 15px #ffff99;
-}
-
-.kanji-Grade-4 {
-    background-color: #ccff99;
-    box-shadow: 0 0 10px #ccff99, 0 0 15px #ccff99;
-}
-
-.kanji-Grade-5 {
-    background-color: #99ff99;
-    box-shadow: 0 0 10px #99ff99, 0 0 15px #99ff99;
-}
-
-.kanji-Grade-6 {
-    background-color: #99ffcc;
-    box-shadow: 0 0 10px #99ffcc, 0 0 15px #99ffcc;
-}
-
-.kanji-JuniorHS-Plus {
-    background-color: #99ffff;
-    box-shadow: 0 0 10px #99ffff, 0 0 15px #99ffff;
-}
-
-.kanji-Jinmeiyou-regular {
-    background-color: #99ccff;
-    box-shadow: 0 0 10px #99ccff, 0 0 15px #99ccff;
-}
-
-.kanji-Jinmeiyou-variant {
-    background-color: #9999ff;
-    box-shadow: 0 0 10px #9999ff, 0 0 15px #9999ff;
-}
-
-/* JLPT Level styles */
-.kanji-JLPT-N5 {
-    background-color: #ff9999;
-    box-shadow: 0 0 10px #ff9999, 0 0 15px #ff9999;
-}
-
-.kanji-JLPT-N4 {
-    background-color: #ffcc99;
-    box-shadow: 0 0 10px #ffcc99, 0 0 15px #ffcc99;
-}
-
-.kanji-JLPT-N3 {
-    background-color: #ffff99;
-    box-shadow: 0 0 10px #ffff99, 0 0 15px #ffff99;
-}
-
-.kanji-JLPT-N2 {
-    background-color: #99ff99;
-    box-shadow: 0 0 10px #99ff99, 0 0 15px #99ff99;
-}
-
-.kanji-JLPT-N1 {
-    background-color: #99ffcc;
-    box-shadow: 0 0 10px #99ffcc, 0 0 15px #99ffcc;
-}
-
-/* RTK styles */
-.kanji-RTK1-6th-ed {
-    background-color: #ff9999;
-    box-shadow: 0 0 10px #ff9999, 0 0 15px #ff9999;
-}
-
-.kanji-RTK1-6th-ed-variant {
-    background-color: #ffcc99;
-    box-shadow: 0 0 10px #ffcc99, 0 0 15px #ffcc99;
-}
-
-.kanji-RTK3-3rd-ed {
-    background-color: #ffff99;
-    box-shadow: 0 0 10px #ffff99, 0 0 15px #ffff99;
-}
-
-
 /* Base legend color box style */
 .legend-color-box {
     width: 1.5em;
     height: 1.5em;
     margin-right: 0.5em;
     display: inline-block;
+    background-color: var(--legend-color);
+    /* Use CSS variable */
 }
 
 .legend-item {
     margin-bottom: 0.5em;
 }
 
-/* Example classes for Kanji Kentei Level colors */
-.legend-Level-10 {
-    background-color: #ff9999;
+
+/* Kanji Kentei Level Styles */
+.kanji-item.Level-10 {
+    background-color: var(--Level-10);
+    box-shadow: 0 0 10px var(--Level-10), 0 0 15px var(--Level-10);
 }
 
-.legend-Level-9 {
-    background-color: #ffcc99;
+.kanji-item.Level-9 {
+    background-color: var(--Level-9);
+    box-shadow: 0 0 10px var(--Level-9), 0 0 15px var(--Level-9);
 }
 
-.legend-Level-8 {
-    background-color: #ffff99;
+.kanji-item.Level-8 {
+    background-color: var(--Level-8);
+    box-shadow: 0 0 10px var(--Level-8), 0 0 15px var(--Level-8);
 }
 
-.legend-Level-7 {
-    background-color: #ccff99;
+.kanji-item.Level-7 {
+    background-color: var(--Level-7);
+    box-shadow: 0 0 10px var(--Level-7), 0 0 15px var(--Level-7);
 }
 
-.legend-Level-6 {
-    background-color: #99ff99;
+.kanji-item.Level-6 {
+    background-color: var(--Level-6);
+    box-shadow: 0 0 10px var(--Level-6), 0 0 15px var(--Level-6);
 }
 
-.legend-Level-5 {
-    background-color: #99ffcc;
+.kanji-item.Level-5 {
+    background-color: var(--Level-5);
+    box-shadow: 0 0 10px var(--Level-5), 0 0 15px var(--Level-5);
 }
 
-.legend-Level-4 {
-    background-color: #99ffff;
+.kanji-item.Level-4 {
+    background-color: var(--Level-4);
+    box-shadow: 0 0 10px var(--Level-4), 0 0 15px var(--Level-4);
 }
 
-.legend-Level-3 {
-    background-color: #99ccff;
+.kanji-item.Level-3 {
+    background-color: var(--Level-3);
+    box-shadow: 0 0 10px var(--Level-3), 0 0 15px var(--Level-3);
 }
 
-.legend-Level-Pre-2 {
-    background-color: #9999ff;
+.kanji-item.Level-Pre-2 {
+    background-color: var(--Level-Pre-2);
+    box-shadow: 0 0 10px var(--Level-Pre-2), 0 0 15px var(--Level-Pre-2);
 }
 
-.legend-Level-2 {
-    background-color: #cc99ff;
+.kanji-item.Level-2 {
+    background-color: var(--Level-2);
+    box-shadow: 0 0 10px var(--Level-2), 0 0 15px var(--Level-2);
 }
 
-.legend-Level-Pre-1 {
-    background-color: #ff99ff;
+.kanji-item.Level-Pre-1 {
+    background-color: var(--Level-Pre-1);
+    box-shadow: 0 0 10px var(--Level-Pre-1), 0 0 15px var(--Level-Pre-1);
 }
 
-.legend-Level-1 {
-    background-color: #ff99cc;
+.kanji-item.Level-1 {
+    background-color: var(--Level-1);
+    box-shadow: 0 0 10px var(--Level-1), 0 0 15px var(--Level-1);
 }
 
-/* Example classes for JLPT Level colors */
-.legend-JLPT-N5 {
-    background-color: #ff9999;
+/* Grade Styles */
+.kanji-item.Grade-1 {
+    background-color: var(--grade-1);
+    box-shadow: 0 0 10px var(--grade-1), 0 0 15px var(--grade-1);
 }
 
-.legend-JLPT-N4 {
-    background-color: #ffcc99;
+.kanji-item.Grade-2 {
+    background-color: var(--grade-2);
+    box-shadow: 0 0 10px var(--grade-2), 0 0 15px var(--grade-2);
 }
 
-.legend-JLPT-N3 {
-    background-color: #ffff99;
+.kanji-item.Grade-3 {
+    background-color: var(--grade-3);
+    box-shadow: 0 0 10px var(--grade-3), 0 0 15px var(--grade-3);
 }
 
-.legend-JLPT-N2 {
-    background-color: #99ff99;
+.kanji-item.Grade-4 {
+    background-color: var(--grade-4);
+    box-shadow: 0 0 10px var(--grade-4), 0 0 15px var(--grade-4);
 }
 
-.legend-JLPT-N1 {
-    background-color: #99ffcc;
+.kanji-item.Grade-5 {
+    background-color: var(--grade-5);
+    box-shadow: 0 0 10px var(--grade-5), 0 0 15px var(--grade-5);
 }
 
-/* Example classes for Grade colors */
-.legend-Grade-1 {
-    background-color: #ff9999;
+.kanji-item.Grade-6 {
+    background-color: var(--grade-6);
+    box-shadow: 0 0 10px var(--grade-6), 0 0 15px var(--grade-6);
 }
 
-.legend-Grade-2 {
-    background-color: #ffcc99;
+.kanji-item.JuniorHS-Plus {
+    background-color: var(--grade-JuniorHS-Plus);
+    box-shadow: 0 0 10px var(--grade-JuniorHS-Plus), 0 0 15px var(--grade-JuniorHS-Plus);
 }
 
-.legend-Grade-3 {
-    background-color: #ffff99;
+.kanji-item.Jinmeiyou-regular {
+    background-color: var(--grade-Jinmeiyou-regular);
+    box-shadow: 0 0 10px var(--grade-Jinmeiyou-regular), 0 0 15px var(--grade-Jinmeiyou-regular);
 }
 
-.legend-Grade-4 {
-    background-color: #ccff99;
+.kanji-item.Jinmeiyou-variant {
+    background-color: var(--grade-Jinmeiyou-variant);
+    box-shadow: 0 0 10px var(--grade-Jinmeiyou-variant), 0 0 15px var(--grade-Jinmeiyou-variant);
 }
 
-.legend-Grade-5 {
-    background-color: #99ff99;
+/* JLPT Level Styles */
+.kanji-item.JLPT-N5 {
+    background-color: var(--JLPT-N5);
+    box-shadow: 0 0 10px var(--JLPT-N5), 0 0 15px var(--JLPT-N5);
 }
 
-.legend-Grade-6 {
-    background-color: #99ffcc;
+.kanji-item.JLPT-N4 {
+    background-color: var(--JLPT-N4);
+    box-shadow: 0 0 10px var(--JLPT-N4), 0 0 15px var(--JLPT-N4);
 }
 
-.legend-JuniorHS {
-    background-color: #99ffff;
+.kanji-item.JLPT-N3 {
+    background-color: var(--JLPT-N3);
+    box-shadow: 0 0 10px var(--JLPT-N3), 0 0 15px var(--JLPT-N3);
 }
 
-.legend-Jinmeiyou-regular {
-    background-color: #99ccff;
+.kanji-item.JLPT-N2 {
+    background-color: var(--JLPT-N2);
+    box-shadow: 0 0 10px var(--JLPT-N2), 0 0 15px var(--JLPT-N2);
 }
 
-.legend-Jinmeiyou-variant {
-    background-color: #9999ff;
+.kanji-item.JLPT-N1 {
+    background-color: var(--JLPT-N1);
+    box-shadow: 0 0 10px var(--JLPT-N1), 0 0 15px var(--JLPT-N1);
+}
+
+/* RTK Styles */
+.kanji-item.RTK1-6th-ed {
+    background-color: var(--RTK1-6th-ed);
+    box-shadow: 0 0 10px var(--RTK1-6th-ed), 0 0 15px var(--RTK1-6th-ed);
+}
+
+.kanji-item.RTK1-6th-ed-variant {
+    background-color: var(--RTK1-6th-ed-variant);
+    box-shadow: 0 0 10px var(--RTK1-6th-ed-variant), 0 0 15px var(--RTK1-6th-ed-variant);
+}
+
+.kanji-item.RTK3-3rd-ed {
+    background-color: var(--RTK3-3rd-ed);
+    box-shadow: 0 0 10px var(--RTK3-3rd-ed), 0 0 15px var(--RTK3-3rd-ed);
 }
