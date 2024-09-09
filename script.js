@@ -91,21 +91,20 @@ function createKanjiGrid(kanjiLevels, subcategoryColors) {
 
     for (const level in kanjiLevels) {
         const kanjis = kanjiLevels[level];
-        const color = subcategoryColors[level]; // Get the color for the current level/subcategory
+        const className = `kanji-${level.replace(/\s+/g, '-').replace(/[()]/g, '')}`; // Generate class name based on level
 
         for (const kanji of kanjis) {
             const kanjiElement = document.createElement('div');
-            kanjiElement.classList.add('kanji-item');
+            kanjiElement.classList.add('kanji-item', className); // Apply predefined classes
             kanjiElement.textContent = kanji;
             kanjiElement.dataset.kanji = kanji;
-            kanjiElement.style.backgroundColor = color; // Apply the color based on subcategory
-            kanjiElement.style.boxShadow = `0 0 10px ${color}, 0 0 15px ${color}`; // Smooth shadow with the same color
             fragment.appendChild(kanjiElement);
         }
     }
 
     container.appendChild(fragment);
 }
+
 
 // Function to create a legend dynamically based on selected category
 function createLegend(subcategoryColors) {
@@ -115,15 +114,11 @@ function createLegend(subcategoryColors) {
     for (const subcategory in subcategoryColors) {
         const legendItem = document.createElement('div');
         legendItem.classList.add('legend-item');
-        legendItem.style.display = 'flex';
-        legendItem.style.alignItems = 'center';
-        legendItem.style.marginBottom = '0.5em';
+
+        const className = `legend-${subcategory.replace(/\s+/g, '-').replace(/[()]/g, '')}`; // Generate class name based on subcategory
 
         const colorBox = document.createElement('div');
-        colorBox.style.backgroundColor = subcategoryColors[subcategory];
-        colorBox.style.width = '1.5em';
-        colorBox.style.height = '1.5em';
-        colorBox.style.marginRight = '0.5em';
+        colorBox.classList.add('legend-color-box', className); // Apply predefined classes
 
         const label = document.createElement('span');
         label.textContent = subcategory;
@@ -133,6 +128,7 @@ function createLegend(subcategoryColors) {
         legendContainer.appendChild(legendItem);
     }
 }
+
 
 // Function to display kanji details
 function displayKanjiDetails(details) {

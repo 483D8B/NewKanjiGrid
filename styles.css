@@ -75,7 +75,6 @@
     font-family: 'Noto Sans JP', sans-serif;
     cursor: pointer;
     width: 100%;
-    transition: transform 0.2s ease-out;
 }
 
 /* .kanji-item:first-child:after {
@@ -242,4 +241,275 @@ label:before {
 
 #checkbox-group span {
     user-select: none;
+}
+
+
+
+/* Kanji Kentei Level styles */
+.kanji-Level-10 {
+    background-color: #ff9999;
+    box-shadow: 0 0 10px #ff9999, 0 0 15px #ff9999;
+}
+
+.kanji-Level-9 {
+    background-color: #ffcc99;
+    box-shadow: 0 0 10px #ffcc99, 0 0 15px #ffcc99;
+}
+
+.kanji-Level-8 {
+    background-color: #ffff99;
+    box-shadow: 0 0 10px #ffff99, 0 0 15px #ffff99;
+}
+
+.kanji-Level-7 {
+    background-color: #ccff99;
+    box-shadow: 0 0 10px #ccff99, 0 0 15px #ccff99;
+}
+
+.kanji-Level-6 {
+    background-color: #99ff99;
+    box-shadow: 0 0 10px #99ff99, 0 0 15px #99ff99;
+}
+
+.kanji-Level-5 {
+    background-color: #99ffcc;
+    box-shadow: 0 0 10px #99ffcc, 0 0 15px #99ffcc;
+}
+
+.kanji-Level-4 {
+    background-color: #99ffff;
+    box-shadow: 0 0 10px #99ffff, 0 0 15px #99ffff;
+}
+
+.kanji-Level-3 {
+    background-color: #99ccff;
+    box-shadow: 0 0 10px #99ccff, 0 0 15px #99ccff;
+}
+
+.kanji-Level-Pre-2 {
+    background-color: #9999ff;
+    box-shadow: 0 0 10px #9999ff, 0 0 15px #9999ff;
+}
+
+.kanji-Level-2 {
+    background-color: #cc99ff;
+    box-shadow: 0 0 10px #cc99ff, 0 0 15px #cc99ff;
+}
+
+.kanji-Level-Pre-1 {
+    background-color: #ff99ff;
+    box-shadow: 0 0 10px #ff99ff, 0 0 15px #ff99ff;
+}
+
+.kanji-Level-1 {
+    background-color: #ff99cc;
+    box-shadow: 0 0 10px #ff99cc, 0 0 15px #ff99cc;
+}
+
+/* Grade styles */
+.kanji-Grade-1 {
+    background-color: #ff9999;
+    box-shadow: 0 0 10px #ff9999, 0 0 15px #ff9999;
+}
+
+.kanji-Grade-2 {
+    background-color: #ffcc99;
+    box-shadow: 0 0 10px #ffcc99, 0 0 15px #ffcc99;
+}
+
+.kanji-Grade-3 {
+    background-color: #ffff99;
+    box-shadow: 0 0 10px #ffff99, 0 0 15px #ffff99;
+}
+
+.kanji-Grade-4 {
+    background-color: #ccff99;
+    box-shadow: 0 0 10px #ccff99, 0 0 15px #ccff99;
+}
+
+.kanji-Grade-5 {
+    background-color: #99ff99;
+    box-shadow: 0 0 10px #99ff99, 0 0 15px #99ff99;
+}
+
+.kanji-Grade-6 {
+    background-color: #99ffcc;
+    box-shadow: 0 0 10px #99ffcc, 0 0 15px #99ffcc;
+}
+
+.kanji-JuniorHS-Plus {
+    background-color: #99ffff;
+    box-shadow: 0 0 10px #99ffff, 0 0 15px #99ffff;
+}
+
+.kanji-Jinmeiyou-regular {
+    background-color: #99ccff;
+    box-shadow: 0 0 10px #99ccff, 0 0 15px #99ccff;
+}
+
+.kanji-Jinmeiyou-variant {
+    background-color: #9999ff;
+    box-shadow: 0 0 10px #9999ff, 0 0 15px #9999ff;
+}
+
+/* JLPT Level styles */
+.kanji-JLPT-N5 {
+    background-color: #ff9999;
+    box-shadow: 0 0 10px #ff9999, 0 0 15px #ff9999;
+}
+
+.kanji-JLPT-N4 {
+    background-color: #ffcc99;
+    box-shadow: 0 0 10px #ffcc99, 0 0 15px #ffcc99;
+}
+
+.kanji-JLPT-N3 {
+    background-color: #ffff99;
+    box-shadow: 0 0 10px #ffff99, 0 0 15px #ffff99;
+}
+
+.kanji-JLPT-N2 {
+    background-color: #99ff99;
+    box-shadow: 0 0 10px #99ff99, 0 0 15px #99ff99;
+}
+
+.kanji-JLPT-N1 {
+    background-color: #99ffcc;
+    box-shadow: 0 0 10px #99ffcc, 0 0 15px #99ffcc;
+}
+
+/* RTK styles */
+.kanji-RTK1-6th-ed {
+    background-color: #ff9999;
+    box-shadow: 0 0 10px #ff9999, 0 0 15px #ff9999;
+}
+
+.kanji-RTK1-6th-ed-variant {
+    background-color: #ffcc99;
+    box-shadow: 0 0 10px #ffcc99, 0 0 15px #ffcc99;
+}
+
+.kanji-RTK3-3rd-ed {
+    background-color: #ffff99;
+    box-shadow: 0 0 10px #ffff99, 0 0 15px #ffff99;
+}
+
+
+/* Base legend color box style */
+.legend-color-box {
+    width: 1.5em;
+    height: 1.5em;
+    margin-right: 0.5em;
+    display: inline-block;
+}
+
+.legend-item {
+    margin-bottom: 0.5em;
+}
+
+/* Example classes for Kanji Kentei Level colors */
+.legend-Level-10 {
+    background-color: #ff9999;
+}
+
+.legend-Level-9 {
+    background-color: #ffcc99;
+}
+
+.legend-Level-8 {
+    background-color: #ffff99;
+}
+
+.legend-Level-7 {
+    background-color: #ccff99;
+}
+
+.legend-Level-6 {
+    background-color: #99ff99;
+}
+
+.legend-Level-5 {
+    background-color: #99ffcc;
+}
+
+.legend-Level-4 {
+    background-color: #99ffff;
+}
+
+.legend-Level-3 {
+    background-color: #99ccff;
+}
+
+.legend-Level-Pre-2 {
+    background-color: #9999ff;
+}
+
+.legend-Level-2 {
+    background-color: #cc99ff;
+}
+
+.legend-Level-Pre-1 {
+    background-color: #ff99ff;
+}
+
+.legend-Level-1 {
+    background-color: #ff99cc;
+}
+
+/* Example classes for JLPT Level colors */
+.legend-JLPT-N5 {
+    background-color: #ff9999;
+}
+
+.legend-JLPT-N4 {
+    background-color: #ffcc99;
+}
+
+.legend-JLPT-N3 {
+    background-color: #ffff99;
+}
+
+.legend-JLPT-N2 {
+    background-color: #99ff99;
+}
+
+.legend-JLPT-N1 {
+    background-color: #99ffcc;
+}
+
+/* Example classes for Grade colors */
+.legend-Grade-1 {
+    background-color: #ff9999;
+}
+
+.legend-Grade-2 {
+    background-color: #ffcc99;
+}
+
+.legend-Grade-3 {
+    background-color: #ffff99;
+}
+
+.legend-Grade-4 {
+    background-color: #ccff99;
+}
+
+.legend-Grade-5 {
+    background-color: #99ff99;
+}
+
+.legend-Grade-6 {
+    background-color: #99ffcc;
+}
+
+.legend-JuniorHS {
+    background-color: #99ffff;
+}
+
+.legend-Jinmeiyou-regular {
+    background-color: #99ccff;
+}
+
+.legend-Jinmeiyou-variant {
+    background-color: #9999ff;
 }
