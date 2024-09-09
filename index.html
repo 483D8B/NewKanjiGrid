@@ -33,16 +33,15 @@
             </select>
             <div id="legend"></div>
             <div id="checkbox-group">
-                <label>
-                    <input type="checkbox" id="onyomi-checkbox" name="search-type" value="onyomi"
-                        onchange="makeCheckboxesMutuallyExclusive('onyomi-checkbox'); handleCheckboxChange();">
-                    Onyomi
-                </label>
-                <label>
-                    <input type="checkbox" id="kunyomi-checkbox" name="search-type" value="kunyomi"
-                        onchange="makeCheckboxesMutuallyExclusive('kunyomi-checkbox'); handleCheckboxChange();">
-                    Kunyomi
-                </label>
+                <input type="checkbox" id="onyomi-checkbox" name="search-type" value="onyomi" data-index="0"
+                    onchange="makeCheckboxesMutuallyExclusive('onyomi-checkbox'); handleCheckboxChange();" />
+                <label for="onyomi-checkbox"></label>
+                <span style="margin-right: 2em;">Onyomi</span>
+                <span>Kunyomi</span>
+                <input type="checkbox" id="kunyomi-checkbox" name="search-type" value="kunyomi" data-index="1"
+                    onchange="makeCheckboxesMutuallyExclusive('kunyomi-checkbox'); handleCheckboxChange();" />
+                <label for="kunyomi-checkbox"></label>
+
             </div>
             <input placeholder="Search..." id="search">
             <div id="match-count">Matches: 0</div>

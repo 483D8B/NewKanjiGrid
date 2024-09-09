@@ -363,11 +363,10 @@ document.addEventListener("DOMContentLoaded", (event) => {
         searchTimeout = setTimeout(() => {
             const searchValue = this.value.trim();
             highlightSearchResults(searchValue);
-        }, 150);
+        }, 300);
     });
 });
 
-// The rest of your code (createKanjiGrid, displayKanjiDetails, highlightSearchResults, createLegend) remains the same
 
 
 function bindIME() {

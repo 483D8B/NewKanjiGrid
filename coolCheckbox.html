@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+    <meta name="description" content="insert description">
+
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+    <style>
+        /* CSS Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            font-size: 100px;
+        }
+
+        body {
+            min-height: 100vh;
+            display: grid;
+            place-items: center;
+        }
+
+        .check {
+            position: relative;
+            background: linear-gradient(90deg, #f19af3, #f099b5);
+            line-height: 0;
+            perspective: 400px;
+        }
+
+        .check input[type="checkbox"],
+        .check label,
+        .check label::before,
+        .check label::after,
+        .check {
+            appearance: none;
+            display: inline-block;
+            border-radius: 1rem;
+            border: 0;
+            transition: .35s ease-in-out;
+            box-sizing: border-box;
+            cursor: pointer;
+        }
+
+        .check label {
+            width: 2.2rem;
+            height: 1rem;
+            background: #d7d7d7;
+            overflow: hidden;
+        }
+
+        .check input[type="checkbox"] {
+            position: absolute;
+            z-index: 1;
+            width: .8rem;
+            height: .8rem;
+            top: .1rem;
+            left: .1rem;
+            background: linear-gradient(45deg, #dedede, #ffffff);
+            box-shadow: 0 6px 7px rgba(0, 0, 0, 0.3);
+            outline: none;
+        }
+
+        .check input[type="checkbox"]:checked {
+            left: 1.3rem;
+        }
+
+        .check input[type="checkbox"]:checked+label {
+            background: transparent;
+        }
+
+        .check label::before,
+        .check label::after {
+            content: "· ·";
+            position: absolute;
+            overflow: hidden;
+            left: .15rem;
+            top: .5rem;
+            height: 1rem;
+            letter-spacing: -.04rem;
+            color: #9b9b9b;
+            font-family: "Times New Roman", serif;
+            z-index: 2;
+            font-size: .6rem;
+            border-radius: 0;
+            transform-origin: 0 0 -.5rem;
+            backface-visibility: hidden;
+        }
+
+        .check label::after {
+            content: "●";
+            top: .65rem;
+            left: .3rem;
+            height: .1rem;
+            width: .35rem;
+            font-size: .2rem;
+            transform-origin: 0 0 -.4rem;
+        }
+
+        .check input[type="checkbox"]:checked+label::before,
+        .check input[type="checkbox"]:checked+label::after {
+            left: 1.55rem;
+            top: .4rem;
+            line-height: .1rem;
+            transform: rotateY(360deg);
+        }
+
+        .check input[type="checkbox"]:checked+label::after {
+            height: .16rem;
+            top: .55rem;
+            left: 1.6rem;
+            font-size: .6rem;
+            line-height: 0;
+        }
+
+        @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:700&subset=cyrillic');
+
+        input {
+            display: none;
+        }
+
+        .block {
+            width: 200px;
+            position: relative;
+            clear: both;
+            margin: 0 0 25px;
+            float: left;
+        }
+
+        span {
+            text-transform: uppercase;
+            font-family: 'Roboto Condensed', sans-serif;
+            font-weight: bold;
+            letter-spacing: 1px;
+            font-size: 15px;
+            float: right;
+            width: 85px;
+            margin: 16px 0 0;
+        }
+
+        .wrap {
+            width: 200px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            padding: 30px 30px 5px;
+        }
+
+        label {
+            width: 100px;
+            height: 50px;
+            box-sizing: border-box;
+            border: 3px solid;
+            float: left;
+            border-radius: 100px;
+            position: relative;
+            cursor: pointer;
+            transition: .3s ease;
+        }
+
+        input[type=checkbox]:checked+label {
+            background: #55e868;
+        }
+
+        input[type=checkbox]:checked+label:before {
+            left: 50px;
+        }
+
+        label:before {
+            transition: .3s ease;
+            content: '';
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            background: white;
+            left: 2px;
+            top: 2px;
+            box-sizing: border-box;
+            border: 3px solid;
+            color: black;
+            border-radius: 100px;
+        }
+    </style>
+</head>
+
+<body>
+
+
+
+    <div class="check">
+        <input id="check" type="checkbox">
+        <label for="check"></label>
+    </div>
+
+
+
+
+    <div class="wrap">
+        <div class="block">
+            <span>cheap</span>
+            <input data-index="0" id="cheap" type="checkbox" />
+            <label for="cheap"></label>
+        </div>
+        <div class="block">
+            <span>fast</span>
+            <input data-index="1" id="fast" type="checkbox" />
+            <label for="fast"></label>
+        </div>
+    </div>
+
+
+
+    <script>
+
+        $('input[type=checkbox]').change(function () {
+            if ($(this).is(':checked')) {
+                $('input[type=checkbox]').not(this).prop('checked', false);
+            }
+        });
+
+
+
+    </script>
+
+
+
+</body>
