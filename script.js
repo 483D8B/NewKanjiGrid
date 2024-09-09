@@ -147,7 +147,6 @@ function displayKanjiDetails(details) {
 }
 
 
-// Function to highlight search results in kanji, meanings, kunyomi, and onyomi, and show match count
 function highlightSearchResults(searchValue) {
     const grid = document.getElementById('grid');
     const kanjiItems = grid.querySelectorAll('.kanji-item');
@@ -159,107 +158,78 @@ function highlightSearchResults(searchValue) {
     // Trim the search value to remove leading/trailing spaces
     searchValue = searchValue.trim();
 
-    // Function to check if searchValue is a single kanji character
-    function isSingleKanjiCharacter(value) {
-        // This assumes that a kanji character is a single Unicode character
-        return value.length === 1 && /\p{Script=Hani}/u.test(value);
-    }
-
-    // If search value is empty or contains only spaces, reset the grid and match count
+    // If search value is empty, reset the grid and match count
     if (!searchValue) {
         matchCountElement.textContent = 'Matches: 0';
-        kanjiItems.forEach(item => {
-            const highlight = item.querySelector('.highlight-overlay');
-            if (highlight) {
-                highlight.remove(); // Remove all highlights if no valid search
-            }
-        });
+        kanjiItems.forEach(item => removeHighlight(item));
         return; // Exit the function if the search is empty or only spaces
+    }
+
+    // Function to check if searchValue is a single kanji character
+    function isSingleKanjiCharacter(value) {
+        return value.length === 1 && /\p{Script=Hani}/u.test(value); // Kanji regex check
+    }
+
+    // Helper function to remove highlight from a kanji item
+    function removeHighlight(item) {
+        const highlight = item.querySelector('.highlight-overlay');
+        if (highlight) {
+            highlight.remove();
+        }
+    }
+
+    // Helper function to add highlight to a kanji item
+    function addHighlight(item) {
+        let highlight = item.querySelector('.highlight-overlay');
+        if (!highlight) {
+            highlight = document.createElement('div');
+            highlight.className = 'highlight-overlay';
+            item.appendChild(highlight);
+        }
     }
 
     // Helper function to check for exact matches
     function checkExactMatch(details) {
-        const matchesKanji = details.literal === searchValue;
-        const matchesMeanings = details.meanings.includes(searchValue);
-        const matchesKunyomi = details.kunyomi.includes(searchValue);
-        const matchesOnyomi = details.onyomi.includes(searchValue);
-
-        return matchesKanji || matchesMeanings || matchesKunyomi || matchesOnyomi;
+        return details.literal === searchValue ||
+            details.meanings.includes(searchValue) ||
+            details.kunyomi.includes(searchValue) ||
+            details.onyomi.includes(searchValue);
     }
 
     // Helper function to check for partial matches
     function checkPartialMatch(details) {
-        const matchesKanji = details.literal.includes(searchValue);
-        const matchesMeanings = details.meanings.some(meaning => meaning.includes(searchValue));
-        const matchesKunyomi = details.kunyomi.some(kunyomi => kunyomi.includes(searchValue));
-        const matchesOnyomi = details.onyomi.some(onyomi => onyomi.includes(searchValue));
-
-        return matchesKanji || matchesMeanings || matchesKunyomi || matchesOnyomi;
+        return details.literal.includes(searchValue) ||
+            details.meanings.some(meaning => meaning.includes(searchValue)) ||
+            details.kunyomi.some(kunyomi => kunyomi.includes(searchValue)) ||
+            details.onyomi.some(onyomi => onyomi.includes(searchValue));
     }
 
-    // First pass: Look for exact matches
+    // Iterate over kanjiItems to find exact or partial matches
     kanjiItems.forEach(item => {
         const kanji = item.dataset.kanji; // Get the kanji character from dataset
         const kanjiDetails = Kanji.getDetails(kanji);
-        const highlight = item.querySelector('.highlight-overlay');
 
-        const matches = checkExactMatch(kanjiDetails);
+        let matches = false;
+
+        if (checkExactMatch(kanjiDetails)) {
+            exactMatches++;
+            matches = true;
+        } else if (exactMatches === 0 && checkPartialMatch(kanjiDetails)) {
+            partialMatches++;
+            matches = true;
+        }
 
         if (matches) {
-            exactMatches++; // Increment exact match count
+            addHighlight(item);
 
-            // Add highlight overlay if not already present
-            if (!highlight) {
-                const overlay = document.createElement('div');
-                overlay.className = 'highlight-overlay';
-                item.appendChild(overlay);
-            }
-            if (!firstMatchFound) {
-                // Scroll into view only if the search value is a single kanji character
-                if (isSingleKanjiCharacter(searchValue)) {
-                    item.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                }
+            if (!firstMatchFound && isSingleKanjiCharacter(searchValue)) {
+                item.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 firstMatchFound = true;
             }
         } else {
-            if (highlight) {
-                highlight.remove(); // Remove highlight if no match
-            }
+            removeHighlight(item); // Remove highlight if no match
         }
     });
-
-    // Second pass: Look for partial matches if no exact match was found
-    if (exactMatches === 0) {
-        kanjiItems.forEach(item => {
-            const kanji = item.dataset.kanji; // Get the kanji character from dataset
-            const kanjiDetails = Kanji.getDetails(kanji);
-            const highlight = item.querySelector('.highlight-overlay');
-
-            const matches = checkPartialMatch(kanjiDetails);
-
-            if (matches) {
-                partialMatches++; // Increment partial match count
-
-                // Add highlight overlay if not already present
-                if (!highlight) {
-                    const overlay = document.createElement('div');
-                    overlay.className = 'highlight-overlay';
-                    item.appendChild(overlay);
-                }
-                if (!firstMatchFound) {
-                    // Scroll into view only if the search value is a single kanji character
-                    if (isSingleKanjiCharacter(searchValue)) {
-                        item.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    }
-                    firstMatchFound = true;
-                }
-            } else {
-                if (highlight) {
-                    highlight.remove(); // Remove highlight if no match
-                }
-            }
-        });
-    }
 
     // Update the match count display
     const totalMatches = exactMatches > 0 ? exactMatches : partialMatches;
