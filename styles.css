@@ -299,62 +299,50 @@ label:before {
 /* Kanji Kentei Level Styles */
 .kanji-item.Level-10 {
     background-color: var(--Level-10);
-    box-shadow: 0 0 10px var(--Level-10), 0 0 15px var(--Level-10);
 }
 
 .kanji-item.Level-9 {
     background-color: var(--Level-9);
-    box-shadow: 0 0 10px var(--Level-9), 0 0 15px var(--Level-9);
 }
 
 .kanji-item.Level-8 {
     background-color: var(--Level-8);
-    box-shadow: 0 0 10px var(--Level-8), 0 0 15px var(--Level-8);
 }
 
 .kanji-item.Level-7 {
     background-color: var(--Level-7);
-    box-shadow: 0 0 10px var(--Level-7), 0 0 15px var(--Level-7);
 }
 
 .kanji-item.Level-6 {
     background-color: var(--Level-6);
-    box-shadow: 0 0 10px var(--Level-6), 0 0 15px var(--Level-6);
 }
 
 .kanji-item.Level-5 {
     background-color: var(--Level-5);
-    box-shadow: 0 0 10px var(--Level-5), 0 0 15px var(--Level-5);
 }
 
 .kanji-item.Level-4 {
     background-color: var(--Level-4);
-    box-shadow: 0 0 10px var(--Level-4), 0 0 15px var(--Level-4);
 }
 
 .kanji-item.Level-3 {
     background-color: var(--Level-3);
-    box-shadow: 0 0 10px var(--Level-3), 0 0 15px var(--Level-3);
 }
 
 .kanji-item.Level-Pre-2 {
     background-color: var(--Level-Pre-2);
-    box-shadow: 0 0 10px var(--Level-Pre-2), 0 0 15px var(--Level-Pre-2);
 }
 
 .kanji-item.Level-2 {
     background-color: var(--Level-2);
-    box-shadow: 0 0 10px var(--Level-2), 0 0 15px var(--Level-2);
 }
 
 .kanji-item.Level-Pre-1 {
     background-color: var(--Level-Pre-1);
-    box-shadow: 0 0 10px var(--Level-Pre-1), 0 0 15px var(--Level-Pre-1);
 }
 
 .kanji-item.Level-1 {
     background-color: var(--Level-1);
-    box-shadow: 0 0 10px var(--Level-1), 0 0 15px var(--Level-1);
 }
 
 /* Grade Styles */
