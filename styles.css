@@ -299,148 +299,119 @@ label:before {
 /* Kanji Kentei Level Styles */
 .kanji-item.Level-10 {
     background-color: var(--Level-10);
-    box-shadow: 0 0 10px var(--Level-10), 0 0 15px var(--Level-10);
 }
 
 .kanji-item.Level-9 {
     background-color: var(--Level-9);
-    box-shadow: 0 0 10px var(--Level-9), 0 0 15px var(--Level-9);
 }
 
 .kanji-item.Level-8 {
     background-color: var(--Level-8);
-    box-shadow: 0 0 10px var(--Level-8), 0 0 15px var(--Level-8);
 }
 
 .kanji-item.Level-7 {
     background-color: var(--Level-7);
-    box-shadow: 0 0 10px var(--Level-7), 0 0 15px var(--Level-7);
 }
 
 .kanji-item.Level-6 {
     background-color: var(--Level-6);
-    box-shadow: 0 0 10px var(--Level-6), 0 0 15px var(--Level-6);
 }
 
 .kanji-item.Level-5 {
     background-color: var(--Level-5);
-    box-shadow: 0 0 10px var(--Level-5), 0 0 15px var(--Level-5);
 }
 
 .kanji-item.Level-4 {
     background-color: var(--Level-4);
-    box-shadow: 0 0 10px var(--Level-4), 0 0 15px var(--Level-4);
 }
 
 .kanji-item.Level-3 {
     background-color: var(--Level-3);
-    box-shadow: 0 0 10px var(--Level-3), 0 0 15px var(--Level-3);
 }
 
 .kanji-item.Level-Pre-2 {
     background-color: var(--Level-Pre-2);
-    box-shadow: 0 0 10px var(--Level-Pre-2), 0 0 15px var(--Level-Pre-2);
 }
 
 .kanji-item.Level-2 {
     background-color: var(--Level-2);
-    box-shadow: 0 0 10px var(--Level-2), 0 0 15px var(--Level-2);
 }
 
 .kanji-item.Level-Pre-1 {
     background-color: var(--Level-Pre-1);
-    box-shadow: 0 0 10px var(--Level-Pre-1), 0 0 15px var(--Level-Pre-1);
 }
 
 .kanji-item.Level-1 {
     background-color: var(--Level-1);
-    box-shadow: 0 0 10px var(--Level-1), 0 0 15px var(--Level-1);
 }
 
 /* Grade Styles */
 .kanji-item.Grade-1 {
     background-color: var(--grade-1);
-    box-shadow: 0 0 10px var(--grade-1), 0 0 15px var(--grade-1);
 }
 
 .kanji-item.Grade-2 {
     background-color: var(--grade-2);
-    box-shadow: 0 0 10px var(--grade-2), 0 0 15px var(--grade-2);
 }
 
 .kanji-item.Grade-3 {
     background-color: var(--grade-3);
-    box-shadow: 0 0 10px var(--grade-3), 0 0 15px var(--grade-3);
 }
 
 .kanji-item.Grade-4 {
     background-color: var(--grade-4);
-    box-shadow: 0 0 10px var(--grade-4), 0 0 15px var(--grade-4);
 }
 
 .kanji-item.Grade-5 {
     background-color: var(--grade-5);
-    box-shadow: 0 0 10px var(--grade-5), 0 0 15px var(--grade-5);
 }
 
 .kanji-item.Grade-6 {
     background-color: var(--grade-6);
-    box-shadow: 0 0 10px var(--grade-6), 0 0 15px var(--grade-6);
 }
 
 .kanji-item.JuniorHS-Plus {
     background-color: var(--grade-JuniorHS-Plus);
-    box-shadow: 0 0 10px var(--grade-JuniorHS-Plus), 0 0 15px var(--grade-JuniorHS-Plus);
 }
 
 .kanji-item.Jinmeiyou-regular {
     background-color: var(--grade-Jinmeiyou-regular);
-    box-shadow: 0 0 10px var(--grade-Jinmeiyou-regular), 0 0 15px var(--grade-Jinmeiyou-regular);
 }
 
 .kanji-item.Jinmeiyou-variant {
     background-color: var(--grade-Jinmeiyou-variant);
-    box-shadow: 0 0 10px var(--grade-Jinmeiyou-variant), 0 0 15px var(--grade-Jinmeiyou-variant);
 }
 
 /* JLPT Level Styles */
 .kanji-item.JLPT-N5 {
     background-color: var(--JLPT-N5);
-    box-shadow: 0 0 10px var(--JLPT-N5), 0 0 15px var(--JLPT-N5);
 }
 
 .kanji-item.JLPT-N4 {
     background-color: var(--JLPT-N4);
-    box-shadow: 0 0 10px var(--JLPT-N4), 0 0 15px var(--JLPT-N4);
 }
 
 .kanji-item.JLPT-N3 {
     background-color: var(--JLPT-N3);
-    box-shadow: 0 0 10px var(--JLPT-N3), 0 0 15px var(--JLPT-N3);
 }
 
 .kanji-item.JLPT-N2 {
     background-color: var(--JLPT-N2);
-    box-shadow: 0 0 10px var(--JLPT-N2), 0 0 15px var(--JLPT-N2);
 }
 
 .kanji-item.JLPT-N1 {
     background-color: var(--JLPT-N1);
-    box-shadow: 0 0 10px var(--JLPT-N1), 0 0 15px var(--JLPT-N1);
 }
 
 /* RTK Styles */
 .kanji-item.RTK1-6th-ed {
     background-color: var(--RTK1-6th-ed);
-    box-shadow: 0 0 10px var(--RTK1-6th-ed), 0 0 15px var(--RTK1-6th-ed);
 }
 
 .kanji-item.RTK1-6th-ed-variant {
     background-color: var(--RTK1-6th-ed-variant);
-    box-shadow: 0 0 10px var(--RTK1-6th-ed-variant), 0 0 15px var(--RTK1-6th-ed-variant);
 }
 
 .kanji-item.RTK3-3rd-ed {
     background-color: var(--RTK3-3rd-ed);
-    box-shadow: 0 0 10px var(--RTK3-3rd-ed), 0 0 15px var(--RTK3-3rd-ed);
 }
